@@ -1,0 +1,32 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Form/FormMasterSite.Master" AutoEventWireup="true" CodeBehind="SearchDateReports.aspx.cs" Inherits="StockManagementSystem.Form.SearchDateReports" %>
+<%@ Register TagPrefix="rsweb" Namespace="Microsoft.Reporting.WebForms" Assembly="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <br />
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+            <br />
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6" style="background-color: #ecf0f1;">
+                <h2 style="text-align: center; background-color: #99CCFF;">-------Sales Report------</h2>
+                <br /><br />
+                <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+                <rsweb:ReportViewer class="table" ID="ReportViewer2" runat="server" Height="407px" style="text-align: center" Width="540px" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
+                    <LocalReport ReportPath="../Reports\Report2.rdlc" ReportEmbeddedResource="StockManagementSystem.Reports.Report2.rdlc">
+                        <DataSources>
+                            <rsweb:ReportDataSource DataSourceId="ObjectDataSource2" Name="DataSet1" />
+                        </DataSources>
+                    </LocalReport>
+                </rsweb:ReportViewer>
+
+                <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="GetAllSales" TypeName="StockManagementSystem.Gateway.SearchDateGateway, StockManagementSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" OldValuesParameterFormatString="original_{0}"></asp:ObjectDataSource>
+            </div>
+            <div class="col-sm-2">
+            </div>
+        </div>
+    </div><br/><br/><br/>
+</asp:Content>
